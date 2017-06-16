@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ballon</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		
+	    $("#cercle").click(bigger);
+	    $("#cercle").mouseleave(smaller);
+		});
+		var color = ["red", "green", "blue"];
+		var size = 200;
+		var now = 0;
+		var getColor = function() {
+			if (now < 0)
+				now = 2;
+			else if (now > 2)
+				now = 0;
+			return(color[now]);
+		}
+
+		var getSize = function () {
+			if (size < 200 || size > 420)
+				size = 200;
+			width = size + "px";
+			return (width);
+		}
+	
+			function bigger(){
+       
+			size += 10;
+			now++;
+			$("#cercle").css("background-color",getColor());
+			$("#cercle").css("width",getSize());
+			$("#cercle").css("height",getSize());
+			}
+
+		function smaller(){
+		size -= 5;
+		now--;
+		$("#cercle").css("background-color",getColor());
+		$("#cercle").css("width",getSize());
+		$("#cercle").css("height",getSize());
+		}
+	
+</script>
+</head>
+<body>
+<div id="cercle" style="width:200px; height:200px; background-color: red; border-radius: 50%; ">
+</div>
+</body>
+</html>
+
+

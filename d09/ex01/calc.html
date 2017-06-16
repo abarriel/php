@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calc</title>
+	<script type="text/javascript">
+		var a;
+		var b;
+		var op;
+		var myVar;
+
+    	myVar = setInterval(function alertFunc() { alert("’Please, use me...");}, 30000);
+
+		function checker(a)
+		{
+			if ((parseFloat(a) == parseInt(a)) && !isNaN(a))
+			{
+					if(parseInt(a) >= 0)
+					{
+
+						return 0;
+					}
+			}	
+			return -1;
+		}
+
+		function print_alert(a)
+		{
+			alert(a);
+			console.log(a);
+		}
+
+		function get()
+		{
+		a = document.getElementById('a').value;
+		b = document.getElementById('b').value;
+		if (checker(a) || checker(b))
+		{
+			print_alert("Error :(");
+			return ;
+		}
+		a = parseInt(a);
+		b = parseInt(b);
+		op = document.getElementById('select').value;
+		switch (op){
+			case '+':
+				print_alert(a+b);
+				break;
+			case '-':
+				print_alert(a-b);
+				break;
+			case '*':
+				print_alert(a*b);
+				break;
+			case '/':
+			{
+				if(b == 0)
+					print_alert("It’s over 9000!");
+				else
+					print_alert(a/b);
+			}
+				break;
+			case '%':
+			{
+				if(b == 0)
+					print_alert("It’s over 9000!");
+				else
+					print_alert(a%b);
+			}
+				break;
+		}
+	}
+	</script>
+</head>
+<body>
+<input type="text" id="a">
+<select id="select">
+  <option value="+" id="+">+</option>
+  <option value="-" id="-">-</option>
+  <option value="*" id="*">*</option>
+  <option value="/" id="/">/</option>
+  <option value="%" id="%">%</option>
+</select>
+<input type="text" id="b">
+<input type="submit" value ="Try me!" onclick="get()">
+</body>
+</html>

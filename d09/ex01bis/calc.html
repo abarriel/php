@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calc</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(function(){
+		var myVar;
+
+    	myVar = setInterval(function alertFunc() { alert("’Please, use me...");}, 30000);
+	$("form").submit(function(){
+		a = $("#a").val();
+		b = $("#b").val();
+		if (checker(a) || checker(b))
+		{
+			print_alert("Error :(");
+			return ;
+		}
+		a = +a;
+		b = +b;
+		op = $("#select").val();;
+		switch (op){
+			case '+':
+				print_alert(a+b);
+				break;
+			case '-':
+				print_alert(a-b);
+				break;
+			case '*':
+				print_alert(a*b);
+				break;
+			case '/':
+			{
+				if(b == 0)
+					print_alert("It’s over 9000!");
+				else
+					print_alert(a/b);
+			}
+				break;
+			case '%':
+			{
+				if(b == 0)
+					print_alert("It’s over 9000!");
+				else
+					print_alert(a%b);
+			}
+				break;
+		}
+	});
+	function print_alert(a)
+		{
+			alert(a);
+			console.log(a);
+		}
+
+	function checker(a)
+		{
+			if(!$.isNumeric(a))
+				return(-1);
+			a = +a;
+			if(a % 1 !== 0 || a < 0)
+				return(-1);
+		}
+});
+	</script>
+</head>
+<body>
+<form >
+<input type="text" id="a">
+<select id="select">
+  <option value="+" id="+">+</option>
+  <option value="-" id="-">-</option>
+  <option value="*" id="*">*</option>
+  <option value="/" id="/">/</option>
+  <option value="%" id="%">%</option>
+</select>
+<input type="text" id="b">
+<input type="submit" value ="Try me!">
+</form>
+</body>
+</html>

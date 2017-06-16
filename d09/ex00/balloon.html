@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ballon</title>
+<script type="text/javascript">
+		var color = ["red", "green", "blue"];
+		var size = 200;
+		var now = 0;
+
+		var getColor = function() {
+			if (now < 0)
+				now = 2;
+			else if (now > 2)
+				now = 0;
+			return(color[now]);
+		}
+
+		var getSize = function () {
+			if (size < 200 || size > 420)
+				size = 200;
+			width = size + "px";
+			return (width);
+		}
+
+		function bigger(){
+		var div = document.getElementById('cercle');
+		size += 10;
+		now++;
+		width = getSize();
+		div.style.backgroundColor = getColor();
+		div.style.width = width ; div.style.height = width;
+		// console.log(width);
+		}
+
+		function smaller(){
+		var div = document.getElementById('cercle');
+		size -= 5;
+		now--;
+		width = getSize(); 
+		div.style.backgroundColor = getColor();
+		div.style.width = width ; div.style.height = width;
+		// console.log(width);
+		}
+</script>
+</head>
+<body>
+<div id="cercle" onclick="bigger()" onmouseleave="smaller()" style="width:200px; height:200px; background-color: red; border-radius: 50%; ">
+</div>
+</body>
+</html>
+
+
